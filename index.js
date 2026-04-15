@@ -13,7 +13,8 @@ if (!process.env.FIREBASE_SERVICE_ACCOUNT) {
 }
 let serviceAccount;
 try {
-  serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
+  const raw = Buffer.from(process.env.FIREBASE_SERVICE_ACCOUNT, 'base64').toString('utf8');
+  serviceAccount = JSON.parse(raw);
 } catch(e) {
   console.error('FATAL: FIREBASE_SERVICE_ACCOUNT no es JSON valido:', e.message);
   process.exit(1);
