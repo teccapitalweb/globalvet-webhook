@@ -1,8 +1,14 @@
 # GlobalVet Club — Webhook Server
 
-Servidor Node.js para procesar pagos de MercadoPago y activar membresías en Firebase.
+Servidor Node.js para activar membresías en Firebase.
+
+> **Nota:** La integración con MercadoPago fue desconectada. La función `activarMiembro()`
+> se conserva porque es genérica (solo escribe en Firestore) y será reutilizada cuando
+> se conecte el nuevo procesador de pago.
 
 ## Variables de entorno requeridas en Railway:
-- `MP_ACCESS_TOKEN` — Access Token de MercadoPago
-- `FIREBASE_SERVICE_ACCOUNT` — JSON de cuenta de servicio de Firebase
-- `RAILWAY_URL` — URL de este servidor en Railway
+- `FIREBASE_SERVICE_ACCOUNT` — JSON de cuenta de servicio de Firebase (base64)
+- `PORT` — opcional, default 3000
+
+## Endpoints activos:
+- `GET /` — health check
